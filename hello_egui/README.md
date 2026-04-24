@@ -1,17 +1,14 @@
-# egui_hello
+# hello_egui
 
-[egui](https://github.com/emilk/egui) フレームワークを使ったシンプルな Hello World GUI アプリです。
+This is a simple Hello World GUI application built with the [egui](https://github.com/emilk/egui) framework.
 
-## 実行方法
+## Usage
 
-`egui_hello` ディレクトリに移動して `cargo run` を実行します。
-
-```bash
-cd egui_hello
+```sh
+cd hello_egui
 cargo run
+Hello, World!
 ```
-
-ウィンドウが開き、**Hello, World!** と表示されます。
 
 ## References
 

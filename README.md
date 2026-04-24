@@ -1,15 +1,15 @@
 # helloRust
+
 The study of Rust
 
-## サンプル一覧
+## Sample List
 
-| ディレクトリ | 内容 |
-|---|---|
-| `cargo/` | Hello World — Rust の最小構成 |
-| `unit_test/` | ユニットテストの基本サンプル |
-| `egui_hello/` | egui を使った Hello World GUI アプリ |
-
-各ディレクトリの `README.md` にビルド手順と解説があります。
+| Directory | Description |
+| --- | --- |
+| [cargo](./cargo/) | Hello World - minimal Rust project structure |
+| [unit_test](./unit_test/) | Basic unit test examples |
+| [hello_egui](./hello_egui/) | Hello World GUI application built with egui |
 
 ## References
-* [The Rust Programming Language 日本語版](https://doc.rust-jp.rs/book-ja/title-page.html)
+
+* [The Rust Programming Language (Japanese Edition)](https://doc.rust-jp.rs/book-ja/title-page.html)
