@@ -4,7 +4,8 @@ fn main() -> eframe::Result {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([320.0, 240.0])
-            .with_resizable(false),
+            .with_resizable(false)
+            .with_transparent(true),
         ..Default::default()
     };
     eframe::run_native(
@@ -35,6 +36,6 @@ impl eframe::App for MyApp {
     }
 
     fn clear_color(&self, _visuals: &egui::Visuals) -> [f32; 4] {
-        egui::Color32::WHITE.to_normalized_gamma_f32()
+        egui::Color32::from_rgba_unmultiplied(255, 255, 255, 160).to_normalized_gamma_f32()
     }
 }
