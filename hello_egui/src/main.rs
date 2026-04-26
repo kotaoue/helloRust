@@ -1,7 +1,12 @@
 use eframe::egui;
 
 fn main() -> eframe::Result {
-    let options = eframe::NativeOptions::default();
+    let options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default()
+            .with_inner_size([640.0, 480.0])
+            .with_resizable(false),
+        ..Default::default()
+    };
     eframe::run_native(
         "Helloworld for egui",
         options,
