@@ -19,11 +19,22 @@ struct MyApp;
 
 impl eframe::App for MyApp {
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
-        ui.heading("Hello, World!");
-        ui.label("This is a simple egui application.");
+        let magenta = egui::Color32::from_rgb(255, 0, 255);
+
+        ui.label(
+            egui::RichText::new("Hello, World!")
+                .heading()
+                .color(egui::Color32::WHITE)
+                .background_color(magenta),
+        );
+        ui.label(
+            egui::RichText::new("This is a simple egui application.")
+                .color(egui::Color32::WHITE)
+                .background_color(magenta),
+        );
     }
 
     fn clear_color(&self, _visuals: &egui::Visuals) -> [f32; 4] {
-        egui::Color32::from_rgb(235, 245, 255).to_normalized_gamma_f32()
+        egui::Color32::WHITE.to_normalized_gamma_f32()
     }
 }
