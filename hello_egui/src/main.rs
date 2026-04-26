@@ -1,10 +1,7 @@
 use eframe::egui;
 
 fn main() -> eframe::Result {
-    let options = eframe::NativeOptions {
-        initial_window_size: Some(egui::vec2(480.0, 320.0)),
-        ..Default::default()
-    };
+    let options = eframe::NativeOptions::default();
     eframe::run_native(
         "Helloworld for egui",
         options,
