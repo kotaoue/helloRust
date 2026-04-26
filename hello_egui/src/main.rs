@@ -19,7 +19,11 @@ struct MyApp;
 
 impl eframe::App for MyApp {
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
-        ui.heading("Hello, World!");
-        ui.label("This is a simple egui application.");
+        egui::Frame::default()
+            .fill(egui::Color32::from_rgb(235, 245, 255))
+            .show(ui, |ui| {
+                ui.heading("Hello, World!");
+                ui.label("This is a simple egui application.");
+            });
     }
 }
