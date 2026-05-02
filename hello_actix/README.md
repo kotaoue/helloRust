@@ -13,7 +13,10 @@ Once the server is running, open your browser or use `curl` to access it:
 
 ```sh
 curl http://127.0.0.1:8080/
-Hello, World!
+```
+
+```sh
+curl http://127.0.0.1:8080/sing
 ```
 
 ## References
