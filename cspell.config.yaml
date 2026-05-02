@@ -3,7 +3,11 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - actix
+  - chrono
   - eframe
   - egui
+  - serde
+  - unmultiplied
 ignoreWords: []
 import: []
