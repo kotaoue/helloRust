@@ -19,6 +19,10 @@ curl http://127.0.0.1:8080/
 curl http://127.0.0.1:8080/sing
 ```
 
+```sh
+curl http://127.0.0.1:8080/sing
+```
+
 ## References
 
 * [Actix Web](https://actix.rs/)
