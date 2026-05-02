@@ -3,7 +3,9 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - actix
   - eframe
   - egui
+  - unmultiplied
 ignoreWords: []
 import: []
