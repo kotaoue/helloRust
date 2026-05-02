@@ -20,7 +20,7 @@ curl http://127.0.0.1:8080/sing
 ```
 
 ```sh
-curl http://127.0.0.1:8080/sing
+curl http://127.0.0.1:8080/json
 ```
 
 ## References
