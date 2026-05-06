@@ -1,6 +1,6 @@
 slint::slint! {
     export component MainWindow inherits Window {
-        title: "Helloworld for Slint";
+        title: "Hello World for Slint";
         width: 320px;
         height: 240px;
 
