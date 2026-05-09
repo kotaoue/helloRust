@@ -8,6 +8,7 @@ words:
   - eframe
   - egui
   - serde
+  - slint
   - unmultiplied
 ignoreWords: []
 import: []
