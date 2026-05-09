@@ -12,14 +12,14 @@ slint::slint! {
 
                 Text {
                     text: "Hello, World!";
-                    color: white;
+                    color: #ff0000;
                     font-size: 28px;
                     horizontal-alignment: center;
                 }
 
                 Text {
                     text: "This is a simple Slint application.";
-                    color: white;
+                    color: #00ff00;
                     horizontal-alignment: center;
                 }
             }
