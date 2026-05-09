@@ -5,14 +5,14 @@ slint::slint! {
         height: 240px;
 
         Rectangle {
-            background: #0033ff;
+            background: #ccccff;
 
             VerticalLayout {
                 alignment: center;
 
                 Text {
                     text: "Hello, World!";
-                    color: #ff0000;
+                    color: #333333;
                     font-size: 28px;
                     font-family: "Helvetica";
                     horizontal-alignment: center;
@@ -20,7 +20,8 @@ slint::slint! {
 
                 Text {
                     text: "This is a simple Slint application.";
-                    color: #00ff00;
+                    color: #666666;
+                    font-size: 14px;
                     font-family: "Times New Roman";
                     horizontal-alignment: center;
                 }
