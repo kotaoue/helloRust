@@ -14,6 +14,7 @@ slint::slint! {
                     text: "Hello, World!";
                     color: #ff0000;
                     font-size: 28px;
+                    font-family: "Times New Roman";
                     horizontal-alignment: center;
                 }
 
