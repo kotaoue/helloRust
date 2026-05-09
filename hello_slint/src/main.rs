@@ -5,7 +5,7 @@ slint::slint! {
         height: 240px;
 
         Rectangle {
-            background: @linear-gradient(135deg, #f7f1e3 0%, #dbeafe 100%);
+            background: @linear-gradient(135deg, #336699 0%, #ccccff 100%);
 
             VerticalLayout {
                 alignment: center;
