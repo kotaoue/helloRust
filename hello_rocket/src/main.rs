@@ -1,5 +1,5 @@
-#[macro_use]
-extern crate rocket;
+use rocket::serde::json::{Json, Value};
+use rocket::{get, launch, routes};
 
 use chrono::{Datelike, Local, Timelike};
 use serde_json::json;
@@ -15,17 +15,16 @@ fn sing() -> &'static str {
 }
 
 #[get("/json")]
-fn json_response() -> String {
+fn json_response() -> Json<Value> {
     let now = Local::now();
-    let response = json!({
+    Json(json!({
         "year": now.year(),
         "month": now.month(),
         "day": now.day(),
         "hour": now.hour(),
         "minute": now.minute(),
         "second": now.second(),
-    });
-    response.to_string()
+    }))
 }
 
 #[launch]
