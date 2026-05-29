@@ -15,6 +15,7 @@ The study of Rust
 | [hello_rocket](./hello_rocket/) | Hello World web application built with Rocket |
 | [hello_slint](./hello_slint/) | Hello World GUI application built with Slint |
 | [hello_warp](./hello_warp/) | Hello World web application built with Warp |
+| [hello_xilem](./hello_xilem/) | Hello World GUI application built with Xilem |
 
 ## References
 
