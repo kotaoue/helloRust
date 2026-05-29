@@ -2,6 +2,9 @@ use chrono::{Datelike, Local, Timelike};
 use serde_json::json;
 use warp::Filter;
 
+const HOST: [u8; 4] = [127, 0, 0, 1];
+const PORT: u16 = 3030;
+
 #[tokio::main]
 async fn main() {
     let hello = warp::path::end().map(|| "Hello World");
@@ -23,5 +26,6 @@ async fn main() {
 
     let routes = hello.or(sing).or(json);
 
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+    println!("Listening on http://{}.{}.{}.{}:{}", HOST[0], HOST[1], HOST[2], HOST[3], PORT);
+    warp::serve(routes).run((HOST, PORT)).await;
 }
