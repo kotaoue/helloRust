@@ -32,6 +32,8 @@ async fn main() {
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
         .await
-        .unwrap();
-    axum::serve(listener, app).await.unwrap();
+        .expect("Failed to bind to address");
+    axum::serve(listener, app)
+        .await
+        .expect("Failed to start server");
 }
