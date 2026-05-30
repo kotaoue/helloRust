@@ -10,6 +10,7 @@ The study of Rust
 | [unit_test](./unit_test/) | Basic unit test examples |
 | [hello_egui](./hello_egui/) | Hello World GUI application built with egui |
 | [hello_slint](./hello_slint/) | Hello World GUI application built with Slint |
+| [hello_dioxus](./hello_dioxus/) | Hello World GUI application built with Dioxus |
 | [hello_actix](./hello_actix/) | Hello World web application built with Actix Web |
 
 ## References
