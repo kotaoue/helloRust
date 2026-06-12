@@ -5,6 +5,7 @@ dictionaries: []
 words:
   - actix
   - chrono
+  - dioxus
   - eframe
   - egui
   - serde
