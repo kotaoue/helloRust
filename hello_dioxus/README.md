@@ -10,6 +10,7 @@ export PATH="$(dirname \"$(rustup which rustc)\"):$HOME/.cargo/bin:/opt/homebrew
 rustup default stable
 rustup target add wasm32-unknown-unknown
 cargo install dioxus-cli --version 0.6.3 --locked
+cargo install wasm-bindgen-cli
 ```
 
 ## Usage
