@@ -4,5 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-dioxus = { version = "0.6", default-features = false, features = ["minimal"] }
-dioxus-ssr = "0.6"
+dioxus = { version = "0.6", default-features = false, features = ["web"] }

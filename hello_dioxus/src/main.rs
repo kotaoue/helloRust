@@ -1,14 +1,7 @@
 use dioxus::prelude::*;
-use dioxus_ssr::render;
-
-mod html;
 
 fn main() {
-    let mut dom = VirtualDom::new(App);
-    dom.rebuild_in_place();
-
-    let html = render(&dom);
-    println!("{}", html::pretty_print_html(&html));
+    launch(App);
 }
 
 #[component]
