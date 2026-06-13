@@ -8,7 +8,7 @@ This is a simple Hello World application built with the [Dioxus](https://dioxusl
 brew install rustup
 rustup default stable
 rustup target add wasm32-unknown-unknown
-cargo install dioxus-cli
+cargo install dioxus-cli --version 0.6.3 --locked
 ```
 
 ## Usage
