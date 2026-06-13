@@ -8,6 +8,7 @@ words:
   - dioxus
   - eframe
   - egui
+  - rustup
   - serde
   - slint
   - unmultiplied
