@@ -5,8 +5,10 @@ dictionaries: []
 words:
   - actix
   - chrono
+  - dioxus
   - eframe
   - egui
+  - rustup
   - serde
   - slint
   - unmultiplied
