@@ -20,7 +20,27 @@ curl http://127.0.0.1:8000/sing
 ```
 
 ```sh
+curl http://127.0.0.1:8000/laugh
+```
+
+```sh
+curl http://127.0.0.1:8000/hello
+```
+
+```sh
+curl http://127.0.0.1:8000/hello/Alice
+```
+
+```sh
+curl http://127.0.0.1:8000/fail
+```
+
+```sh
 curl http://127.0.0.1:8000/json
+```
+
+```sh
+curl "http://127.0.0.1:8000/json?message=warp%20style"
 ```
 
 ## References
