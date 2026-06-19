@@ -1,9 +1,15 @@
 use chrono::{Datelike, Local, Timelike};
+use serde::Deserialize;
 use serde_json::json;
 use warp::Filter;
 
 const HOST: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 3030;
+
+#[derive(Deserialize)]
+struct JsonQuery {
+    message: Option<String>,
+}
 
 #[tokio::main]
 async fn main() {
@@ -13,18 +19,25 @@ async fn main() {
 
     let laugh = warp::path("laugh").map(|| "Ha ha ha");
 
-    let json = warp::path("json").map(|| {
-        let now = Local::now();
-        let response = json!({
-            "year": now.year(),
-            "month": now.month(),
-            "day": now.day(),
-            "hour": now.hour(),
-            "minute": now.minute(),
-            "second": now.second(),
+    let json = warp::path("json")
+        .and(warp::get())
+        .and(warp::query::<JsonQuery>())
+        .map(|query: JsonQuery| {
+            let now = Local::now();
+            let response = json!({
+                "year": now.year(),
+                "month": now.month(),
+                "day": now.day(),
+                "hour": now.hour(),
+                "minute": now.minute(),
+                "second": now.second(),
+                "message": query
+                    .message
+                    .unwrap_or_else(|| "warp っぽい JSON レスポンス".to_string()),
+                "route": "json",
+            });
+            warp::reply::with_header(warp::reply::json(&response), "X-Warp-Style", "filters")
         });
-        warp::reply::json(&response)
-    });
 
     let routes = hello.or(sing).or(laugh).or(json);
 
