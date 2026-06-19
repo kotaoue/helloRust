@@ -27,6 +27,10 @@ curl http://127.0.0.1:3030/laugh
 curl http://127.0.0.1:3030/json
 ```
 
+```sh
+curl "http://127.0.0.1:3030/json?message=warp%20style"
+```
+
 ## References
 
 - [Warp](https://github.com/seanmonstar/warp)
