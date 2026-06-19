@@ -25,5 +25,5 @@ curl http://127.0.0.1:3030/json
 
 ## References
 
-* [Warp](https://github.com/seanmonstar/warp)
-* [warp - crates.io](https://crates.io/crates/warp)
+- [Warp](https://github.com/seanmonstar/warp)
+- [warp - crates.io](https://crates.io/crates/warp)
