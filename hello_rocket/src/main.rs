@@ -23,7 +23,7 @@ fn hello_plain() -> &'static str {
 }
 
 #[get("/hello/<name>")]
-fn hello_name(name: String) -> String {
+fn hello_name(name: &str) -> String {
     format!("Hello, {}!", name)
 }
 
