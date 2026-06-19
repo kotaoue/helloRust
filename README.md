@@ -12,6 +12,7 @@ The study of Rust
 | [hello_slint](./hello_slint/) | Hello World GUI application built with Slint |
 | [hello_dioxus](./hello_dioxus/) | Hello World SSR application built with Dioxus |
 | [hello_actix](./hello_actix/) | Hello World web application built with Actix Web |
+| [hello_warp](./hello_warp/) | Hello World web application built with Warp |
 
 ## References
 
