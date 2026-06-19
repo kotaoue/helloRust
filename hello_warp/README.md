@@ -20,6 +20,10 @@ curl http://127.0.0.1:3030/sing
 ```
 
 ```sh
+curl http://127.0.0.1:3030/laugh
+```
+
+```sh
 curl http://127.0.0.1:3030/json
 ```
 

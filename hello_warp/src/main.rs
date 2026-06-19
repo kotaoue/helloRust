@@ -11,6 +11,8 @@ async fn main() {
 
     let sing = warp::path("sing").map(|| "La la la");
 
+    let laugh = warp::path("laugh").map(|| "Ha ha ha");
+
     let json = warp::path("json").map(|| {
         let now = Local::now();
         let response = json!({
@@ -24,7 +26,7 @@ async fn main() {
         warp::reply::json(&response)
     });
 
-    let routes = hello.or(sing).or(json);
+    let routes = hello.or(sing).or(laugh).or(json);
 
     println!("Listening on http://{}.{}.{}.{}:{}", HOST[0], HOST[1], HOST[2], HOST[3], PORT);
     warp::serve(routes).run((HOST, PORT)).await;
