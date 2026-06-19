@@ -15,6 +15,12 @@ struct JsonQuery {
 async fn main() {
     let hello = warp::path::end().map(|| "Hello World");
 
+    let hello_plain = warp::path!("hello").map(|| "HelloWorld");
+
+    let hello_name = warp::path!("hello" / String).map(|name: String| {
+        format!("Hello, {}!", name)
+    });
+
     let sing = warp::path("sing").map(|| "La la la");
 
     let laugh = warp::path("laugh").map(|| "Ha ha ha");
@@ -39,7 +45,7 @@ async fn main() {
             warp::reply::with_header(warp::reply::json(&response), "X-Warp-Style", "filters")
         });
 
-    let routes = hello.or(sing).or(laugh).or(json);
+    let routes = hello.or(hello_plain).or(hello_name).or(sing).or(laugh).or(json);
 
     println!("Listening on http://{}.{}.{}.{}:{}", HOST[0], HOST[1], HOST[2], HOST[3], PORT);
     warp::serve(routes).run((HOST, PORT)).await;

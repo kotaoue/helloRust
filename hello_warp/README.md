@@ -24,6 +24,14 @@ curl http://127.0.0.1:3030/laugh
 ```
 
 ```sh
+curl http://127.0.0.1:3030/hello
+```
+
+```sh
+curl http://127.0.0.1:3030/hello/Alice
+```
+
+```sh
 curl http://127.0.0.1:3030/json
 ```
 
