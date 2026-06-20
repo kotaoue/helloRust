@@ -22,6 +22,7 @@ impl Page {
 
 #[derive(Clone)]
 struct TodoItem {
+    id: u64,
     title: String,
     done: bool,
 }
@@ -32,6 +33,7 @@ struct AppState {
     count: i32,
     draft: String,
     todos: Vec<TodoItem>,
+    next_todo_id: u64,
 }
 
 impl AppState {
@@ -42,10 +44,22 @@ impl AppState {
         }
 
         self.todos.push(TodoItem {
+            id: self.next_todo_id,
             title: title.to_owned(),
             done: false,
         });
+        self.next_todo_id += 1;
         self.draft.clear();
+    }
+
+    fn toggle_todo(&mut self, id: u64, done: bool) {
+        if let Some(todo) = self.todos.iter_mut().find(|todo| todo.id == id) {
+            todo.done = done;
+        }
+    }
+
+    fn remove_todo(&mut self, id: u64) {
+        self.todos.retain(|todo| todo.id != id);
     }
 }
 
@@ -76,13 +90,14 @@ fn todo_rows(state: &mut AppState) -> impl WidgetView<AppState> {
     virtual_scroll(0..state.todos.len() as i64, |state: &mut AppState, idx| {
         let idx = idx as usize;
         let todo = state.todos[idx].clone();
+        let todo_id = todo.id;
 
         flex_row((
             checkbox(todo.title, todo.done, move |state: &mut AppState, checked| {
-                state.todos[idx].done = checked;
+                state.toggle_todo(todo_id, checked);
             }),
             text_button("Delete", move |state: &mut AppState| {
-                state.todos.remove(idx);
+                state.remove_todo(todo_id);
             }),
         ))
     })
@@ -134,14 +149,17 @@ fn main() -> Result<(), EventLoopError> {
             draft: String::new(),
             todos: vec![
                 TodoItem {
+                    id: 0,
                     title: "Learn how Xilem rebuilds views".to_string(),
                     done: false,
                 },
                 TodoItem {
+                    id: 1,
                     title: "Add a second task".to_string(),
                     done: true,
                 },
             ],
+            next_todo_id: 2,
         },
         app_logic,
         WindowOptions::new("Xilem pages: counter + TODO list"),
