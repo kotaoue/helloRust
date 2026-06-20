@@ -5,12 +5,14 @@ dictionaries: []
 words:
   - actix
   - chrono
+  - Datelike
   - dioxus
   - eframe
   - egui
   - rustup
   - serde
   - slint
+  - Timelike
   - unmultiplied
 ignoreWords: []
 import: []
