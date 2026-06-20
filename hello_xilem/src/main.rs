@@ -1,4 +1,4 @@
-use xilem::view::{button, flex, label};
+use xilem::view::{flex_col, label, text_button};
 use xilem::winit::error::EventLoopError;
 use xilem::{EventLoop, WidgetView, WindowOptions, Xilem};
 
@@ -9,11 +9,11 @@ struct AppState {
 
 // 状態 → ビュー の純粋な関数。状態が変わるたびに呼ばれ、UIが再構築される
 fn app_logic(state: &mut AppState) -> impl WidgetView<AppState> {
-    flex((
+    flex_col((
         label(format!("Count: {}", state.count)),
-        button("Increment", |s: &mut AppState| s.count += 1),
-        button("Decrement", |s: &mut AppState| s.count -= 1),
-        button("Reset", |s: &mut AppState| s.count = 0),
+        text_button("Increment", |s: &mut AppState| s.count += 1),
+        text_button("Decrement", |s: &mut AppState| s.count -= 1),
+        text_button("Reset", |s: &mut AppState| s.count = 0),
     ))
 }
 
