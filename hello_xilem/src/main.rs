@@ -88,16 +88,22 @@ fn home_page(state: &mut AppState) -> impl WidgetView<AppState> {
 
 fn todo_rows(state: &mut AppState) -> impl WidgetView<AppState> {
     virtual_scroll(0..state.todos.len() as i64, |state: &mut AppState, idx| {
-        let idx = idx as usize;
-        let todo = state.todos[idx].clone();
-        let todo_id = todo.id;
+        let todo = state.todos.get(idx as usize).cloned();
+        let (title, done, todo_id) = match todo {
+            Some(todo) => (todo.title, todo.done, Some(todo.id)),
+            None => ("(stale item)".to_string(), false, None),
+        };
 
         flex_row((
-            checkbox(todo.title, todo.done, move |state: &mut AppState, checked| {
-                state.toggle_todo(todo_id, checked);
+            checkbox(title, done, move |state: &mut AppState, checked| {
+                if let Some(id) = todo_id {
+                    state.toggle_todo(id, checked);
+                }
             }),
             text_button("Delete", move |state: &mut AppState| {
-                state.remove_todo(todo_id);
+                if let Some(id) = todo_id {
+                    state.remove_todo(id);
+                }
             }),
         ))
     })
