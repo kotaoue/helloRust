@@ -20,7 +20,27 @@ curl http://127.0.0.1:8080/sing
 ```
 
 ```sh
+curl http://127.0.0.1:8080/laugh
+```
+
+```sh
+curl http://127.0.0.1:8080/hello
+```
+
+```sh
+curl http://127.0.0.1:8080/hello/Alice
+```
+
+```sh
+curl http://127.0.0.1:8080/fail
+```
+
+```sh
 curl http://127.0.0.1:8080/json
+```
+
+```sh
+curl "http://127.0.0.1:8080/json?message=axum%20style"
 ```
 
 ## References
