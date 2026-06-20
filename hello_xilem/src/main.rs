@@ -149,18 +149,21 @@ fn validate_name(name: &str) -> (&'static str, String) {
     let trimmed = name.trim();
 
     if trimmed.is_empty() {
-        return ("Please enter your name.", "");
+        return ("Please enter your name.", String::new());
     }
 
     if trimmed.chars().count() < 2 {
-        return ("Name is too short (min 2 chars).", "");
+        return ("Name is too short (min 2 chars).", String::new());
     }
 
     if !trimmed
         .chars()
         .all(|c| c.is_alphabetic() || c == ' ' || c == '-' || c == '\'')
     {
-        return ("Use letters, spaces, apostrophe, or hyphen only.", "");
+        return (
+            "Use letters, spaces, apostrophe, or hyphen only.",
+            String::new(),
+        );
     }
 
     ("Looks good!", format!("Hello, {}!", trimmed))
