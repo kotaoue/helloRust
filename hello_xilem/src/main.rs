@@ -1,6 +1,6 @@
 use xilem::view::{
     checkbox, flex_col, flex_row, indexed_stack, label, sized_box, text_button, text_input,
-    virtual_scroll, CrossAxisAlignment, FlexExt as _,
+    virtual_scroll, CrossAxisAlignment,
 };
 use xilem::winit::error::EventLoopError;
 use xilem::{EventLoop, WidgetView, WindowOptions, Xilem};
@@ -96,15 +96,17 @@ fn todo_page(state: &mut AppState) -> impl WidgetView<AppState> {
             state.todos.len(),
             state.todos.iter().filter(|todo| todo.done).count()
         )),
-        sized_box(text_input(state.draft.clone(), |state: &mut AppState, draft| {
+        sized_box(
+            text_input(state.draft.clone(), |state: &mut AppState, draft| {
             state.draft = draft;
-        }))
-        .expand_width()
-        .placeholder("Add a new task")
-        .on_enter(|state: &mut AppState, draft| {
-            state.draft = draft;
-            state.add_todo();
-        }),
+        })
+            .placeholder("Add a new task")
+            .on_enter(|state: &mut AppState, draft| {
+                state.draft = draft;
+                state.add_todo();
+            }),
+        )
+        .expand_width(),
         flex_row((
             text_button("Add", |state: &mut AppState| state.add_todo()),
             text_button("Clear input", |state: &mut AppState| {
@@ -113,7 +115,7 @@ fn todo_page(state: &mut AppState) -> impl WidgetView<AppState> {
         )),
         todo_rows(state),
     ))
-    .cross_axis_alignment(CrossAxisAlignment::Stretch)
+    .cross_axis_alignment(CrossAxisAlignment::Fill)
 }
 
 // 状態 → ビュー の純粋な関数。状態が変わるたびに呼ばれ、UIが再構築される
