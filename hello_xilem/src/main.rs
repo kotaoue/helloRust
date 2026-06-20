@@ -9,6 +9,7 @@ use xilem::{EventLoop, WidgetView, WindowOptions, Xilem};
 enum Page {
     Home,
     Todo,
+    Form,
 }
 
 impl Page {
@@ -16,6 +17,7 @@ impl Page {
         match self {
             Page::Home => 0,
             Page::Todo => 1,
+            Page::Form => 2,
         }
     }
 }
@@ -32,6 +34,7 @@ struct AppState {
     page: Page,
     count: i32,
     draft: String,
+    name_input: String,
     todos: Vec<TodoItem>,
     next_todo_id: u64,
 }
@@ -70,6 +73,9 @@ fn navigation(_state: &mut AppState) -> impl WidgetView<AppState> {
         }),
         text_button("TODO", |state: &mut AppState| {
             state.page = Page::Todo;
+        }),
+        text_button("Form", |state: &mut AppState| {
+            state.page = Page::Form;
         }),
     ))
 }
@@ -139,11 +145,53 @@ fn todo_page(state: &mut AppState) -> impl WidgetView<AppState> {
     .cross_axis_alignment(CrossAxisAlignment::Fill)
 }
 
+fn validate_name(name: &str) -> (&'static str, String) {
+    let trimmed = name.trim();
+
+    if trimmed.is_empty() {
+        return ("Please enter your name.", "");
+    }
+
+    if trimmed.chars().count() < 2 {
+        return ("Name is too short (min 2 chars).", "");
+    }
+
+    if !trimmed
+        .chars()
+        .all(|c| c.is_alphabetic() || c == ' ' || c == '-' || c == '\'')
+    {
+        return ("Use letters, spaces, apostrophe, or hyphen only.", "");
+    }
+
+    ("Looks good!", format!("Hello, {}!", trimmed))
+}
+
+fn form_page(state: &mut AppState) -> impl WidgetView<AppState> {
+    let (validation_message, greeting) = validate_name(&state.name_input);
+
+    flex_col((
+        label("Name form + validation"),
+        sized_box(
+            text_input(state.name_input.clone(), |state: &mut AppState, value| {
+                state.name_input = value;
+            })
+            .placeholder("Type your name"),
+        )
+        .expand_width(),
+        label(validation_message),
+        label(greeting),
+        text_button("Clear", |state: &mut AppState| {
+            state.name_input.clear();
+        }),
+    ))
+    .cross_axis_alignment(CrossAxisAlignment::Fill)
+}
+
 // 状態 → ビュー の純粋な関数。状態が変わるたびに呼ばれ、UIが再構築される
 fn app_logic(state: &mut AppState) -> impl WidgetView<AppState> {
     flex_col((
         navigation(state),
-        indexed_stack((home_page(state), todo_page(state))).active(state.page.index()),
+        indexed_stack((home_page(state), todo_page(state), form_page(state))).active(state.page.index()),
     ))
 }
 
@@ -153,6 +201,7 @@ fn main() -> Result<(), EventLoopError> {
             page: Page::Home,
             count: 0,
             draft: String::new(),
+            name_input: String::new(),
             todos: vec![
                 TodoItem {
                     id: 0,
@@ -168,7 +217,7 @@ fn main() -> Result<(), EventLoopError> {
             next_todo_id: 2,
         },
         app_logic,
-        WindowOptions::new("Xilem pages: counter + TODO list"),
+        WindowOptions::new("Xilem pages: counter + TODO + form"),
     );
     app.run_in(EventLoop::with_user_event())?;
     Ok(())
