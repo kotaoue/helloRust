@@ -12,6 +12,7 @@ words:
   - rustup
   - serde
   - slint
+  - tauri
   - Timelike
   - unmultiplied
   - xilem

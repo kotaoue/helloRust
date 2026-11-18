@@ -14,6 +14,7 @@ The study of Rust
 | [hello_egui](./hello_egui/) | Hello World GUI application built with egui |
 | [hello_rocket](./hello_rocket/) | Hello World web application built with Rocket |
 | [hello_slint](./hello_slint/) | Hello World GUI application built with Slint |
+| [hello_tauri](./hello_tauri/) | Hello World desktop application built with Tauri |
 | [hello_warp](./hello_warp/) | Hello World web application built with Warp |
 | [hello_xilem](./hello_xilem/) | Hello World GUI application built with Xilem |
 
